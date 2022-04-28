@@ -9,13 +9,11 @@ import os
 import wandb
 import pandas as pd
 
-
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
 
 
 def go(args):
-
     run = wandb.init(job_type="basic_cleaning")
     run.config.update(args)
 
@@ -56,9 +54,7 @@ def go(args):
 
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser(description="This step cleans the data")
-
 
     parser.add_argument(
         "--input_artifact",
@@ -101,7 +97,6 @@ if __name__ == "__main__":
         help="Maximum price limit",
         required=True
     )
-
 
     args = parser.parse_args()
 
