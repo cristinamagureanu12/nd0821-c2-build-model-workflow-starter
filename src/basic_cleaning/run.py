@@ -35,6 +35,10 @@ def go(args):
     data['last_review'] = pd.to_datetime(data['last_review'])
     logger.info("Basic cleaning: Fixed data type for last_review column")
 
+    idx = data['longitude'].between(-74.25, -73.50) & data['latitude'].between(40.5, 41.2)
+    data = data[idx].copy()
+    logger.info("Basic cleaning: Keep data from proper geolocation")
+
     output_file = args.output_artifact
     data.to_csv(output_file)
 
